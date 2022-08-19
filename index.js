@@ -121,10 +121,15 @@ class Game {
   updateObstacles = () => {
     this.frames++;
 
-    for (let i = 0; i < this.obstacles.length; i++) {
+    this.obstacles.forEach((obs) => {
+      obs.updatePosition();
+      obs.draw();
+    });
+
+    /*for (let i = 0; i < this.obstacles.length; i++) {
       this.obstacles[i].updatePosition();
       this.obstacles[i].draw();
-    }
+    } */
 
     if (this.frames % 120 === 0) {
       const originY = 0;
@@ -152,7 +157,7 @@ class Game {
     });
 
     if (crashed) {
-      crashSound.play();
+      //crashSound.play();
 
       cancelAnimationFrame(this.animationId);
 
